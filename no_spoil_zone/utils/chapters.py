@@ -12,10 +12,12 @@ def get_chapter(book_name, chapter_number):
         chapters = re.split("chapter ", text, flags = re.IGNORECASE)
         num = chapter_number+1
 
+        return chapters[num]
+
     else:
 
-        return None:
+        return None
 
-    return chapters[num]
+    
 
 get_chapter("A Boy's Fortune; Or, The Strange Adventures of Ben Baker",1)
