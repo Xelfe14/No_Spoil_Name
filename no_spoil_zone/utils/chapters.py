@@ -5,19 +5,56 @@ def get_chapter(book_name, chapter_number):
     filepath = book_name+'.txt'
     with open(filepath, "r", encoding="utf8") as file:
         text = file.read()
-    text = text.replace('\n',' ')
+        text = text.replace('\n',' ')
 
-    if len(re.findall('chapter',text,flags = re.IGNORECASE)) != 0:
+    # Brute Force regular expression rules to fit most conditions
 
-        chapters = re.split("chapter ", text, flags = re.IGNORECASE)
-        num = chapter_number+1
+    # chapters divided by *  *  *  *  * 1179
+    case1 = re.search('\*\s+\*\s+\*\s+\*\s+\*',text)
+    #chapters divided by chpater Chapter CHAPTER chapters Chapters CHAPTERS 1845
+    case2 = (len(re.findall('chapter',text,flags = re.IGNORECASE)) != 0)
+    # both case 1 and case2 is 729
 
-        return chapters[num]
+
+    # case3 = 
+
+    if case1 and case2:
+        print('case1&2')
+        matches=[match.span() for match in re.finditer('chapter',text,flags=re.IGNORECASE)]
+        fi_ch = 0
+        for i in range(1,len(matchesone)):
+            if matchesone[i]-matchesone[i-1]<50:
+                fi_ch+=1
+            else:
+                continue
+#         print(first_ch)
+        chapters = re.split("chapter", text, flags = re.IGNORECASE)
+        num = chapter_number
+        return chapters[1:num+fi_ch]
+
+
+    elif case1:
+        chapters = re.split("\*\s+\*\s+\*\s+\*\s+\*", text)
+        num = chapter_number
+        return chapters[1:num]
+
+
+    elif case2:
+#         print('case2')
+        matches=[match.span() for match in re.finditer('chapter',text,flags=re.IGNORECASE)]
+        fi_ch = 0
+        for i in range(1,len(matchesone)):
+            if matchesone[i]-matchesone[i-1]<50:
+                fi_ch+=1
+            else:
+                continue
+#         print(first_ch)
+        chapters = re.split("chapter", text, flags = re.IGNORECASE)
+        num = chapter_number
+        return chapters[1:num+fi_ch]
+
 
     else:
-
         return None
 
-    
-
-get_chapter("A Boy's Fortune; Or, The Strange Adventures of Ben Baker",1)
+# get_chapter("Wait and Hope; Or, A Plucky Boy's Luck",3)
