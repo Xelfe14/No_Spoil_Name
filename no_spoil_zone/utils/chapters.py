@@ -30,13 +30,13 @@ def get_chapter(book_name, chapter_number):
 #         print(first_ch)
         chapters = re.split("chapter", text, flags = re.IGNORECASE)
         num = chapter_number
-        return chapters[1:num+fi_ch]
+        return ''.join(chapters[1:num+fi_ch])
 
 
     elif case1:
         chapters = re.split("\*\s+\*\s+\*\s+\*\s+\*", text)
         num = chapter_number
-        return chapters[1:num]
+        return ''.join(chapters[1:num])
 
 
     elif case2:
@@ -51,10 +51,10 @@ def get_chapter(book_name, chapter_number):
 #         print(first_ch)
         chapters = re.split("chapter", text, flags = re.IGNORECASE)
         num = chapter_number
-        return chapters[1:num+fi_ch]
+        return ''.join(chapters[1:num+fi_ch])
 
 
     else:
         return None
 
-result = get_chapter("Wait and Hope; Or, A Plucky Boy's Luck",5)
+# result = get_chapter("Wait and Hope; Or, A Plucky Boy's Luck",5)
