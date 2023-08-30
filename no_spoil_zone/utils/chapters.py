@@ -20,7 +20,7 @@ def get_chapter(book_name, chapter_number):
 
     if case1 and case2:
         print('case1&2')
-        matches=[match.span() for match in re.finditer('chapter',text,flags=re.IGNORECASE)]
+        matchesone=[match.span()[0] for match in re.finditer('chapter',text,flags=re.IGNORECASE)]
         fi_ch = 0
         for i in range(1,len(matchesone)):
             if matchesone[i]-matchesone[i-1]<50:
@@ -30,18 +30,18 @@ def get_chapter(book_name, chapter_number):
 #         print(first_ch)
         chapters = re.split("chapter", text, flags = re.IGNORECASE)
         num = chapter_number
-        return chapters[1:num+fi_ch]
+        return ''.join(chapters[1:num+fi_ch])
 
 
     elif case1:
         chapters = re.split("\*\s+\*\s+\*\s+\*\s+\*", text)
         num = chapter_number
-        return chapters[1:num]
+        return ''.join(chapters[1:num])
 
 
     elif case2:
 #         print('case2')
-        matches=[match.span() for match in re.finditer('chapter',text,flags=re.IGNORECASE)]
+        matchesone=[match.span()[0] for match in re.finditer('chapter',text,flags=re.IGNORECASE)]
         fi_ch = 0
         for i in range(1,len(matchesone)):
             if matchesone[i]-matchesone[i-1]<50:
@@ -51,10 +51,10 @@ def get_chapter(book_name, chapter_number):
 #         print(first_ch)
         chapters = re.split("chapter", text, flags = re.IGNORECASE)
         num = chapter_number
-        return chapters[1:num+fi_ch]
+        return ''.join(chapters[1:num+fi_ch])
 
 
     else:
         return None
 
-# get_chapter("Wait and Hope; Or, A Plucky Boy's Luck",3)
+# result = get_chapter("Wait and Hope; Or, A Plucky Boy's Luck",5)
