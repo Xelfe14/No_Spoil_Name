@@ -1,60 +1,43 @@
+import os
 import re
 
-def get_chapter(book_name, chapter_number):
-    
-    filepath = book_name+'.txt'
+PARENT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir, os.pardir))
+BASE_DIR = os.path.join(PARENT_DIR, "dataset", "Gutenberg_Text-master")
+
+def get_chapter(author_name, book_name, chapter_number):
+    filepath = os.path.join(BASE_DIR, author_name, f"{book_name}.txt")
+    if not os.path.exists(filepath):
+        print(f"File {filepath} does not exist.")
+        return None
+
     with open(filepath, "r", encoding="utf8") as file:
-        text = file.read()
-        text = text.replace('\n',' ')
+        text = file.read().replace('\n', ' ').replace("\'re", " are").replace("\'d", " would").replace("\'ll", " will").replace("won't", "would not")
 
-    # Brute Force regular expression rules to fit most conditions
-
-    # chapters divided by *  *  *  *  * 1179
-    case1 = re.search('\*\s+\*\s+\*\s+\*\s+\*',text)
-    #chapters divided by chpater Chapter CHAPTER chapters Chapters CHAPTERS 1845
-    case2 = (len(re.findall('chapter',text,flags = re.IGNORECASE)) != 0)
-    # both case 1 and case2 is 729
-
-
-    # case3 = 
+    case1 = re.search('\*\s+\*\s+\*\s+\*\s+\*', text)
+    case2 = (len(re.findall('chapter', text, flags=re.IGNORECASE)) != 0)
+    result = []
 
     if case1 and case2:
-        print('case1&2')
-        matchesone=[match.span()[0] for match in re.finditer('chapter',text,flags=re.IGNORECASE)]
-        fi_ch = 0
-        for i in range(1,len(matchesone)):
-            if matchesone[i]-matchesone[i-1]<50:
-                fi_ch+=1
-            else:
-                continue
-#         print(first_ch)
-        chapters = re.split("chapter", text, flags = re.IGNORECASE)
-        num = chapter_number
-        return ''.join(chapters[1:num+fi_ch])
-
+        matches = [match.span()[0] for match in re.finditer('chapter', text, flags=re.IGNORECASE)]
+        fi_ch = sum(1 for i in range(1, len(matches)) if matches[i] - matches[i - 1] < 50)
+        chapters = re.split("chapter", text, flags=re.IGNORECASE)
+        result = chapters[1:chapter_number + fi_ch + 1]
 
     elif case1:
         chapters = re.split("\*\s+\*\s+\*\s+\*\s+\*", text)
-        num = chapter_number
-        return ''.join(chapters[1:num])
-
+        result = chapters[1:chapter_number + 1]
 
     elif case2:
-#         print('case2')
-        matchesone=[match.span()[0] for match in re.finditer('chapter',text,flags=re.IGNORECASE)]
-        fi_ch = 0
-        for i in range(1,len(matchesone)):
-            if matchesone[i]-matchesone[i-1]<50:
-                fi_ch+=1
-            else:
-                continue
-#         print(first_ch)
-        chapters = re.split("chapter", text, flags = re.IGNORECASE)
-        num = chapter_number
-        return ''.join(chapters[1:num+fi_ch])
-
+        matches = [match.span()[0] for match in re.finditer('chapter', text, flags=re.IGNORECASE)]
+        fi_ch = sum(1 for i in range(1, len(matches)) if matches[i] - matches[i - 1] < 50)
+        chapters = re.split("chapter", text, flags=re.IGNORECASE)
+        result = chapters[1:chapter_number + fi_ch + 1]
 
     else:
-        return None
+        result = [text]  # Returns the full text as a single-element list if no chapter divisions are found
 
-# result = get_chapter("Wait and Hope; Or, A Plucky Boy's Luck",5)
+    return result
+
+# Test the function
+chapters = get_chapter("Austen, Jane", "Emma", 7)
+print(chapters[0])  # Should print the number of chapters retrieved
