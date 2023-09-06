@@ -78,12 +78,12 @@ if st.button("Run Summarization :🏄🏼:"):
     #-------------------------------------------------------------------------------------------------------------------------------------------------------
     #Main Summary
 
-    if chapter_number == 1:
-        st.subheader(f":pensif::bulle_de_pensée: What happens in the first chapter of {book_name}?")
-    else:
-        st.subheader(f":pensif::bulle_de_pensée: What happens in the first {chapter_number} chapters of {book_name}?")
-        st.markdown(dummy_dict['master_sum'])
-        st.markdown("---")
+        if chapter_number == 1:
+            st.subheader(f":pensif::bulle_de_pensée: What happens in the first chapter of {book_name}?")
+        else:
+            st.subheader(f":pensif::bulle_de_pensée: What happens in the first {chapter_number} chapters of {book_name}?")
+            st.markdown(dummy_dict['master_sum'])
+            st.markdown("---")
 
 
     # if book_summary_reponse.status_code == 200:
@@ -94,13 +94,13 @@ if st.button("Run Summarization :🏄🏼:"):
 
     #-------------------------------------------------------------------------------------------------------------------------------------------------------
     #Summary Breakdown
-    st.subheader("Chapter Breakdown")
-    st.markdown(f"### Topics for Chapter {i}")
-    for topic, value in dummy_dict_2['topics'].items():
-        st.write(f"**{topic}**: {', '.join(value)}"
-    st.markdown(f"### Summary for Chapter {i}")
-    st.write(dummy_dict_2['chapter_sum'])
-    st.markdown("---")
+        st.subheader("Chapter Breakdown")
+        st.markdown(f"### Topics for Chapter {i}")
+        for topic, value in dummy_dict_2['topics'].items():
+            st.write(f"**{topic}**: {', '.join(value)}"
+        st.markdown(f"### Summary for Chapter {i}")
+        st.write(dummy_dict_2['chapter_sum'])
+        st.markdown("---")
 
 
 
