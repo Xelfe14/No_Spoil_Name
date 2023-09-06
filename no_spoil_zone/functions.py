@@ -17,17 +17,16 @@ import re
 import os
 
 
-# nltk.download('wordnet')
+nltk.download('wordnet')
+nltk.download('punkt')
+nltk.download('averaged_perceptron_tagger')
 
-PROJECT = os.getenv('PROJECT')
+PROJECT = os.getenv('GCP_PROJECT_ID')
 LOCATION = os.getenv('LOCATION')
 
 
-PARENT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
-BASE_DIR = os.path.join(PARENT_DIR, "dataset", "Gutenberg_Text-master")
-
 def get_chapter(author_name, book_name, chapter_number):
-    filepath = os.path.join(BASE_DIR, author_name, f"{book_name}.txt")
+    filepath = os.path.join("DEMO_DATASET", author_name, f"{book_name}.txt")
     if not os.path.exists(filepath):
         print(f"File {filepath} does not exist.")
         return None
@@ -61,7 +60,7 @@ def get_chapter(author_name, book_name, chapter_number):
     return result
 
 def get_one_chapter(author_name, book_name, chapter_number):
-    filepath = os.path.join(BASE_DIR, author_name, f"{book_name}.txt")
+    filepath = os.path.join("DEMO_DATASET", author_name, f"{book_name}.txt")
     if not os.path.exists(filepath):
         print(f"File {filepath} does not exist.")
         return None
@@ -192,4 +191,4 @@ def clean_extractive_summary(text):
     return text
 
 
-print(len(get_chapter("Austen, Jane", "Emma", 2)))
+# print(get_chapter("Jane Austen", "Emma", 2))

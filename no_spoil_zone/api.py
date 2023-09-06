@@ -2,6 +2,10 @@ from functions import *
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+
+PROJECT = os.getenv('GCP_PROJECT_ID')
+LOCATION = os.getenv('LOCATION')
+
 app = FastAPI()
 
 app.add_middleware(
@@ -20,7 +24,7 @@ PARAMETERS = {
     }
 
 # Initialize Vertex AI (you'll have to replace this with appropriate initialization)
-vertexai.init(project=PROJECT, location="us-central1")
+vertexai.init(project="le-wagon-bootcamp-392422", location="us-central1")
 model = TextGenerationModel.from_pretrained("text-bison@001")
 
 @app.get("/master_summary")
@@ -62,4 +66,9 @@ def get_individual_chapter_summary(author_name, book_name, chapter_number:int):
     # Append each chapter's summary and topics to the respective lists in big_dict
     return {"chapter_sum":response.text, "topics":topic_dict}
 
-print(get_individual_chapter_summary("Austen, Jane", "Emma", 2))
+# print(get_individual_chapter_summary("Austen, Jane", "Emma", 2))
+
+# Define a root `/` endpoint
+@app.get('/')
+def index():
+    return {'ok': True}
