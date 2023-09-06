@@ -50,8 +50,8 @@ params = {
     'book_name': book_name,
     'chapter': chapter_number
     }
-url_main_summary=
-url_chapter_summary=
+url_main_summary= 'none'
+url_chapter_summary='none'
 main_summary_response= requests.get(url_main_summary, params=params)
 chapter_summary_response= requests.get(url_chapter_summary, params=params)
 
