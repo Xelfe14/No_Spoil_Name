@@ -35,10 +35,10 @@ st.markdown(page_bg_img, unsafe_allow_html=True)
 #-------------------------------------------------------------------------------------------------------------------------------------------------------
 #Front header
 st.markdown(
-        "<h1 style='text-align: center; color: black;'>:💯: No Sploil Zone! :💯:</h1>",
+        "<h1 style='text-align: center; color: black;'>💯 No Sploil Zone! 💯</h1>",
         unsafe_allow_html=True
     )
-st.markdown("### :📚: Choose a Book and Discover Its Summary and Topics :📚:")
+st.markdown("### 📚 Choose a Book and Discover Its Summary and Topics 📚")
 st.markdown("---")
 
 with st.container():
@@ -58,38 +58,24 @@ params = {
     }
 url_main_summary= 'none'
 url_chapter_summary='none'
-main_summary_response= requests.get(url_main_summary, params=params)
-chapter_summary_response= requests.get(url_chapter_summary, params=params)
+# main_summary_response= requests.get(url_main_summary, params=params)
+# chapter_summary_response= requests.get(url_chapter_summary, params=params)
 
 #-------------------------------------------------------------------------------------------------------------------------------------------------------
 
-#drop down boxs for Authors and Books and Chapters
-# with st.container():
-#     # User input
-#     author_name = st.selectbox("Select Author", ["Austen, Jane", "Shakespeare, William", "Twain, Mark"])
-#     book_name = st.selectbox("Select Book", ["Emma", "Hamlet", "Tom Sawyer"])
-#     chapter_number = st.number_input("Enter Chapter Number:", min_value=1, value=1)
-
-    # authorz = df_books['Author'].sort_values().unique()
-    # selected_author = st.selectbox('Author', authorz)
-    # filtered_bookz = df_books[df_books['Author'] == selected_author]
-    # titles_for_author = filtered_bookz['Title'].sort_values().unique()
-    # selected_title = st.selectbox('Book', titles_for_author)
-
-    # Input for the number of chapters
 
 
 if st.button("Run Summarization :🏄🏼:"):
-    with st.spinner('Running! No sploils here :😉:'):
+    # with st.spinner('Running! No sploils here :😉:'):
     #-------------------------------------------------------------------------------------------------------------------------------------------------------
     #Main Summary
 
-        if chapter_number == 1:
-            st.subheader(f":pensif::bulle_de_pensée: What happens in the first chapter of {book_name}?")
-        else:
-            st.subheader(f":pensif::bulle_de_pensée: What happens in the first {chapter_number} chapters of {book_name}?")
-            st.markdown(dummy_dict['master_sum'])
-            st.markdown("---")
+    if chapter_number == 1:
+        st.subheader(f":pensif::bulle_de_pensée: What happens in the first chapter of {book_name}?")
+    else:
+        st.subheader(f":pensif::bulle_de_pensée: What happens in the first {chapter_number} chapters of {book_name}?")
+        st.markdown(dummy_dict['master_sum'])
+        st.markdown("---")
 
 
     # if book_summary_reponse.status_code == 200:
@@ -100,7 +86,7 @@ if st.button("Run Summarization :🏄🏼:"):
 
     #-------------------------------------------------------------------------------------------------------------------------------------------------------
     #Summary Breakdown
-        st.subheader("Chapter Breakdown")
+    st.subheader("Chapter Breakdown")
         # for i in range(chapter_number):
         #     i=1
         #     st.markdown(f"### Topics for Chapter {i}")
@@ -112,15 +98,15 @@ if st.button("Run Summarization :🏄🏼:"):
         #     st.markdown("---")
         #     i+=1
 
-        for i in range(chapter_number):
-            # Display topics for the current chapter
-            st.markdown(f"### Topics for Chapter {i + 1}")
-            for topic, value in dummy_dict_2['topics'].items():
-                st.write(f"**{topic}**: {', '.join(value)}")
+    for i in range(chapter_number):
+        # Display topics for the current chapter
+        st.markdown(f"### Topics for Chapter {i + 1}")
+        for topic, value in dummy_dict_2['topics'].items():
+            st.write(f"**{topic}**: {', '.join(value)}")
 
-                # Display the summary for the current chapter
-                st.markdown(f"### Summary for Chapter {i + 1}")
-                st.write(dummy_dict_2['chapter_sum'])
+            # Display the summary for the current chapter
+            st.markdown(f"### Summary for Chapter {i + 1}")
+            st.write(dummy_dict_2['chapter_sum'])
 
     # Add a horizontal line to separate chapters
     st.markdown("---")
