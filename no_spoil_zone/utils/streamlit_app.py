@@ -97,51 +97,16 @@ if st.button("Run Summarization 🏄🏼"):
     #-------------------------------------------------------------------------------------------------------------------------------------------------------
     # #Summary Breakdown
 
-    # st.title("Chapter Breakdown")
-    # for i in range(chapter_number):
-    #     # Display topics for the current chapter
-    #     st.markdown(f"### Topics for Chapter {i + 1}")
-    #     for topic, value in dummy_dict_2['topics'].items():
-    #         st.write(f"**{topic}**: {', '.join(value)}")
-
-    #      # Display the summary for the current chapter
-    #     st.markdown(f"### Summary for Chapter {i + 1}")
-    #     st.write(dummy_dict_2['chapter_sum'])
-
-    # # Add a horizontal line to separate chapters
-    # st.markdown("---")
-
-
     st.title("Chapter Breakdown")
-
-    chapter_number = chapter_number  # Replace with the actual number of chapters
-    current_chapter = st.slider("Select Chapter", 1, chapter_number, 1)
-    chapter_box = st.beta_container()
-
-    #       Display topics for the current chapter inside the box
-    with chapter_box:
-        st.markdown(f"### Topics for Chapter {current_chapter}")
+    for i in range(chapter_number):
+        # Display topics for the current chapter
+        st.markdown(f"### Topics for Chapter {i + 1}")
         for topic, value in dummy_dict_2['topics'].items():
             st.write(f"**{topic}**: {', '.join(value)}")
 
-    # Display the summary for the current chapter inside the box
-    with chapter_box:
-        st.markdown(f"### Summary for Chapter {current_chapter}")
+         # Display the summary for the current chapter
+        st.markdown(f"### Summary for Chapter {i + 1}")
         st.write(dummy_dict_2['chapter_sum'])
 
-    # Add a horizontal line to separate chapters inside the box
-    with chapter_box:
-        st.markdown("---")
-
-
-
-
-    # if chapter_response.status_code == 200:
-    #     chapter_data = chapter_response.json()
-    #     st.write(f"Chapter Title: {chapter_data['title']}")
-    #     st.subheader("Topic Analysis")
-    #     for topic, summary in chapter_data['topics'].items():
-    #         st.write(f"Topic: {topic}")
-    #         st.write(f"Summary: {summary}")
-    # else:
-    #     st.write("Unable to fetch chapter details.")
+    # Add a horizontal line to separate chapters
+    st.markdown("---")
