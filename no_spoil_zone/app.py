@@ -13,6 +13,7 @@ from nltk.corpus import wordnet
 import nltk
 import re
 import os
+import requests
 
 nltk.download('wordnet')
 
