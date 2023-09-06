@@ -65,8 +65,9 @@ params = {
     'book_name': book_name,
     'chapter': chapter_number
     }
-url_chapter_summary='https://api-no-spoil-zone-vr5zz4u7ca-uc.a.run.app/docs#/default/get_individual_chapter_summary_chapter_summary_get'
-url_main_summary=f'https://api-no-spoil-zone-vr5zz4u7ca-uc.a.run.app/master_summary?author_name={author_name}&book_name={book_name}=&chapter_number={chapter_number}'
+url_chapter_summary=f'https://api-no-spoil-zone-vr5zz4u7ca-uc.a.run.app/chapter_summary?author_name={author_name}&book_name={book_name}&chapter_number={chapter_number}'
+
+url_main_summary=f'https://api-no-spoil-zone-vr5zz4u7ca-uc.a.run.app/master_summary?author_name={author_name}&book_name={book_name}&chapter_number={chapter_number}'
 main_summary_response= requests.get(url_main_summary)
 chapter_summary_response= requests.get(url_chapter_summary)
 
@@ -101,12 +102,12 @@ if st.button("Run Summarization 🏄🏼"):
     for i in range(chapter_number):
         # Display topics for the current chapter
         st.markdown(f"### Topics for Chapter {i + 1}")
-        for topic, value in dummy_dict_2['topics'].items():
+        for topic, value in chapter_summary_response.items():
             st.write(f"**{topic}**: {', '.join(value)}")
 
          # Display the summary for the current chapter
         st.markdown(f"### Summary for Chapter {i + 1}")
-        st.write(dummy_dict_2['chapter_sum'])
+        st.write(chapter_summary_response['chapter_sum'])
 
     # Add a horizontal line to separate chapters
     st.markdown("---")
