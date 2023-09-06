@@ -65,15 +65,15 @@ url_chapter_summary='none'
 
 
 
-if st.button("Run Summarization :🏄🏼:"):
+if st.button("Run Summarization 🏄🏼"):
     # with st.spinner('Running! No sploils here :😉:'):
     #-------------------------------------------------------------------------------------------------------------------------------------------------------
     #Main Summary
 
     if chapter_number == 1:
-        st.subheader(f":pensif::bulle_de_pensée: What happens in the first chapter of {book_name}?")
+        st.subheader(f"🧐💭 What happens in the first chapter of {book_name}?")
     else:
-        st.subheader(f":pensif::bulle_de_pensée: What happens in the first {chapter_number} chapters of {book_name}?")
+        st.subheader(f"🧐💭 What happens in the first {chapter_number} chapters of {book_name}?")
         st.markdown(dummy_dict['master_sum'])
         st.markdown("---")
 
