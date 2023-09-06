@@ -45,7 +45,7 @@ with st.container():
     # User input
     author_name = st.selectbox("Select Author", ["Austen, Jane", "Shakespeare, William", "Twain, Mark"])
     book_name = st.selectbox("Select Book", ["Emma", "Hamlet", "Tom Sawyer"])
-    num_chapters = int(st.text_input('Total Number of Chapters'))
+    chapter_number = int(st.text_input('Total Number of Chapters'))
 #-------------------------------------------------------------------------------------------------------------------------------------------------------
 # PARAMS
 
