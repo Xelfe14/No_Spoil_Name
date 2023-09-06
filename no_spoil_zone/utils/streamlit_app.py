@@ -6,19 +6,6 @@ import base64
 import plotly.express as px
 import requests
 
-
-dumy_dict={
-    'master_sum': 'sumssunfovnzonzrnojvoizjfoznocnzoecizecinzoiczopejozjfojaofjaozj)ajfàjaoiefjoiejfoijfoinekon'
-    }
-dumy_dict_2={
-    "chapter_sum": 'jfpefpzkfoz,foz,io,zf,zofnozfioze,foz,eiof,zepfk,pze,',
-    "topics": {
-        "persons" :['j','o','r'],
-        "places": ['a','b','h'],
-        "general": ['x','z','w']
-        }
-    }
-
 # Background image CSS
 page_bg_img = f"""
 <style>
@@ -62,7 +49,17 @@ with st.container():
 #-------------------------------------------------------------------------------------------------------------------------------------------------------
 # PARAMS
 
-
+dummy_dict={
+    'master_sum': 'sumssunfovnzonzrnojvoizjfoznocnzoecizecinzoiczopejozjfojaofjaozj)ajfàjaoiefjoiejfoijfoinekon'
+    }
+dummy_dict_2={
+    "chapter_sum": 'jfpefpzkfoz,foz,io,zf,zofnozfioze,foz,eiof,zepfk,pze,',
+    "topics": {
+        "persons" :['j','o','r'],
+        "places": ['a','b','h'],
+        "general": ['x','z','w']
+        }
+    }
 params = {
     'author_name': author_name,
     'book_name': book_name,
