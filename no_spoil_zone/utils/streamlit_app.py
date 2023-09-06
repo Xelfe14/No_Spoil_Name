@@ -73,8 +73,8 @@ with st.container():
     # Input for the number of chapters
     num_chapters = int(st.text_input('Total Number of Chapters'))
 
-if st.button("Run Summarization :fusée:"):
-    with st.spinner('Running! No sploils here :clin_d'œil:'):
+if st.button("Run Summarization :🏄🏼:"):
+    with st.spinner('Running! No sploils here :😉:'):
     #-------------------------------------------------------------------------------------------------------------------------------------------------------
     #Main Summary
 
