@@ -65,10 +65,10 @@ params = {
     'book_name': book_name,
     'chapter': chapter_number
     }
-url_main_summary= 'none'
-url_chapter_summary='none'
-# main_summary_response= requests.get(url_main_summary, params=params)
-# chapter_summary_response= requests.get(url_chapter_summary, params=params)
+url_chapter_summary='https://api-no-spoil-zone-vr5zz4u7ca-uc.a.run.app/docs#/default/get_individual_chapter_summary_chapter_summary_get'
+url_main_summary=f'https://api-no-spoil-zone-vr5zz4u7ca-uc.a.run.app/master_summary?author_name={author_name}&book_name={book_name}=&chapter_number={chapter_number}'
+main_summary_response= requests.get(url_main_summary)
+chapter_summary_response= requests.get(url_chapter_summary)
 
 #-------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -79,26 +79,13 @@ if st.button("Run Summarization 🏄🏼"):
     #-------------------------------------------------------------------------------------------------------------------------------------------------------
     #Main Summary
 
-    custom_style = """
-    <style>
-        .highlight-text {
-            color: white; /* Change text color to white */
-            background-color: rgba(0, 0, 0, 0.5); /* Add a semi-transparent black background */
-            padding: 10px; /* Add padding for better visibility */
-            border-radius: 5px; /* Add rounded corners for the text box */
-        }
-        </style>
-    """
-
-
-
     if chapter_number == 1:
         st.header(f"🧐💭 What happens in the first chapter of {book_name}?")
-        st.markdown(dummy_dict['master_sum'],custom_style, unsafe_allow_html=True)
+        st.markdown(main_summary_response['master_sum'])
     else:
         st.header(f"🧐💭 What happens in the first: {chapter_number} chapters of {book_name}?")
-        st.markdown(dummy_dict['master_sum'])
-        st.markdown("---")
+        st.markdown(main_summary_response['master_sum'])
+        st.markdown("###---")
 
 
     # if book_summary_reponse.status_code == 200:
