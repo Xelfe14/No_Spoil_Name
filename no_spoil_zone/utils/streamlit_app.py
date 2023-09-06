@@ -83,7 +83,7 @@ if st.button("Run Summarization 🏄🏼"):
         st.subheader(f"🧐💭 What happens in the first chapter of {book_name}?")
         st.markdown(dummy_dict['master_sum'])
     else:
-        st.subheader(f"🧐💭 What happens in the first {chapter_number} chapters of {book_name}?")
+        st.subheader(f"🧐💭 What happens in the first: {chapter_number} chapters of {book_name}?")
         st.markdown(dummy_dict['master_sum'])
         st.markdown("---")
 
