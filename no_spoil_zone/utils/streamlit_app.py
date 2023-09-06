@@ -45,7 +45,7 @@ with st.container():
     # User input
     author_name = st.selectbox("Select Author", ["Austen, Jane", "Shakespeare, William", "Twain, Mark"])
     book_name = st.selectbox("Select Book", ["Emma", "Hamlet", "Tom Sawyer"])
-    chapter_number = st.number_input("Enter Chapter Number:", min_value=1, value=1)
+    num_chapters = int(st.text_input('Total Number of Chapters'))
 #-------------------------------------------------------------------------------------------------------------------------------------------------------
 # PARAMS
 
@@ -77,7 +77,7 @@ chapter_summary_response= requests.get(url_chapter_summary, params=params)
     # selected_title = st.selectbox('Book', titles_for_author)
 
     # Input for the number of chapters
-    num_chapters = int(st.text_input('Total Number of Chapters'))
+
 
 if st.button("Run Summarization :🏄🏼:"):
     with st.spinner('Running! No sploils here :😉:'):
