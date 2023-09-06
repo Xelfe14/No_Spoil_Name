@@ -35,11 +35,17 @@ st.markdown(page_bg_img, unsafe_allow_html=True)
 #-------------------------------------------------------------------------------------------------------------------------------------------------------
 #Front header
 st.markdown(
-        "<h1 style='text-align: center; color: black;'>:100: No Sploil Zone! :100:</h1>",
+        "<h1 style='text-align: center; color: black;'>:💯: No Sploil Zone! :💯:</h1>",
         unsafe_allow_html=True
     )
-st.markdown("### :livres: Choose a Book and Discover Its Summary and Topics :livres:")
+st.markdown("### :📚: Choose a Book and Discover Its Summary and Topics :📚:")
 st.markdown("---")
+
+with st.container():
+    # User input
+    author_name = st.selectbox("Select Author", ["Austen, Jane", "Shakespeare, William", "Twain, Mark"])
+    book_name = st.selectbox("Select Book", ["Emma", "Hamlet", "Tom Sawyer"])
+    chapter_number = st.number_input("Enter Chapter Number:", min_value=1, value=1)
 #-------------------------------------------------------------------------------------------------------------------------------------------------------
 # PARAMS
 
@@ -58,11 +64,11 @@ chapter_summary_response= requests.get(url_chapter_summary, params=params)
 #-------------------------------------------------------------------------------------------------------------------------------------------------------
 
 #drop down boxs for Authors and Books and Chapters
-with st.container():
-    # User input
-    author_name = st.selectbox("Select Author", ["Austen, Jane", "Shakespeare, William", "Twain, Mark"])
-    book_name = st.selectbox("Select Book", ["Emma", "Hamlet", "Tom Sawyer"])
-    chapter_number = st.number_input("Enter Chapter Number:", min_value=1, value=1)
+# with st.container():
+#     # User input
+#     author_name = st.selectbox("Select Author", ["Austen, Jane", "Shakespeare, William", "Twain, Mark"])
+#     book_name = st.selectbox("Select Book", ["Emma", "Hamlet", "Tom Sawyer"])
+#     chapter_number = st.number_input("Enter Chapter Number:", min_value=1, value=1)
 
     # authorz = df_books['Author'].sort_values().unique()
     # selected_author = st.selectbox('Author', authorz)
