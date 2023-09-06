@@ -95,14 +95,29 @@ if st.button("Run Summarization :🏄🏼:"):
     #-------------------------------------------------------------------------------------------------------------------------------------------------------
     #Summary Breakdown
         st.subheader("Chapter Breakdown")
-        for i in range(chapter_number):
-            st.markdown(f"### Topics for Chapter {i}")
-            for topic, value in dummy_dict_2['topics'].items():
-                st.write(f"**{topic}**: {', '.join(value)}"
+        # for i in range(chapter_number):
+        #     i=1
+        #     st.markdown(f"### Topics for Chapter {i}")
+        #     for topic, value in dummy_dict_2['topics'].items():
+        #         st.write(f"**{topic}**: {', '.join(value)}"
 
-            st.markdown(f"### Summary for Chapter {i}")
-            st.write(dummy_dict_2['chapter_sum'])
-            st.markdown("---")
+        #     st.markdown(f"### Summary for Chapter {i}")
+        #     st.write(dummy_dict_2['chapter_sum'])
+        #     st.markdown("---")
+        #     i+=1
+
+        for i in range(chapter_number):
+            # Display topics for the current chapter
+            st.markdown(f"### Topics for Chapter {i + 1}")
+            for topic, value in dummy_dict_2['topics'].items():
+                st.write(f"**{topic}**: {', '.join(value)}")
+
+                # Display the summary for the current chapter
+                st.markdown(f"### Summary for Chapter {i + 1}")
+                st.write(dummy_dict_2['chapter_sum'])
+
+    # Add a horizontal line to separate chapters
+    st.markdown("---")
 
 
 
