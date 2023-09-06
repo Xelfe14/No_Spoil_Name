@@ -65,7 +65,7 @@ params = {
     'book_name': book_name,
     'chapter': chapter_number
     }
-url_chapter_summary=f'https://api-no-spoil-zone-vr5zz4u7ca-uc.a.run.app/chapter_summary?author_name=ane%20Austen&book_name=Emma&chapter_number=2'
+url_chapter_summary='https://api-no-spoil-zone-vr5zz4u7ca-uc.a.run.app/master_summary?author_name=ane%20Austen&book_name=Emma&chapter_number=2'
 
 # url_main_summary=f'https://api-no-spoil-zone-vr5zz4u7ca-uc.a.run.app/master_summary?author_name={author_name}&book_name={book_name}&chapter_number={chapter_number}'
 url_main_summary= 'https://api-no-spoil-zone-vr5zz4u7ca-uc.a.run.app/chapter_summary?author_name=Jane%20Austen&book_name=Emma&chapter_number=2'
