@@ -49,8 +49,17 @@ with st.container():
 #-------------------------------------------------------------------------------------------------------------------------------------------------------
 # PARAMS
 
-dumy_dict={ 'master_sum': 'sumssunfovnzonzrnojvoizjfoznocnzoecizecinzoiczopejozjfojaofjaozj)ajfàjaoiefjoiejfoijfoinekon'}
-dumy_dict_2={ "chapter_sum": 'jfpefpzkfoz,foz,io,zf,zofnozfioze,foz,eiof,zepfk,pze,' , "topics": {"persons" :['j','o','r'],"places": ['a','b','h'], "general": ['x','z','w'] } }
+dumy_dict={
+    'master_sum': 'sumssunfovnzonzrnojvoizjfoznocnzoecizecinzoiczopejozjfojaofjaozj)ajfàjaoiefjoiejfoijfoinekon'
+    }
+dumy_dict_2={
+    "chapter_sum": 'jfpefpzkfoz,foz,io,zf,zofnozfioze,foz,eiof,zepfk,pze,',
+    "topics": {
+        "persons" :['j','o','r'],
+        "places": ['a','b','h'],
+        "general": ['x','z','w']
+        }
+    }
 params = {
     'author_name': author_name,
     'book_name': book_name,
@@ -72,6 +81,7 @@ if st.button("Run Summarization 🏄🏼"):
 
     if chapter_number == 1:
         st.subheader(f"🧐💭 What happens in the first chapter of {book_name}?")
+        st.markdown(dummy_dict['master_sum'])
     else:
         st.subheader(f"🧐💭 What happens in the first {chapter_number} chapters of {book_name}?")
         st.markdown(dummy_dict['master_sum'])
