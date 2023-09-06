@@ -96,6 +96,20 @@ if st.button("Run Summarization 🏄🏼"):
 
     #-------------------------------------------------------------------------------------------------------------------------------------------------------
     #Summary Breakdown
+    # Define text content for different slides based on BOX input
+    slide_content = [f"Chapter {i}" for i in range(1, num_chapters+1)]
+
+    # Create tabs
+    tabs = [f"Chapter {i}" for i in range(1, num_chapters+1)]
+    selected_tab = st.radio("Select a Chapter:", tabs)
+
+
+    # Get the index of the selected tab
+    selected_slide_index = tabs.index(selected_tab)
+    # Display the content of the selected slide
+    st.text_area("Chapter Content", value=slide_content[selected_slide_index], height=300, key=selected_slide_index)
+
+
     st.subheader("Chapter Breakdown")
         # for i in range(chapter_number):
         #     i=1
@@ -135,17 +149,3 @@ if st.button("Run Summarization 🏄🏼"):
     #         st.write(f"Summary: {summary}")
     # else:
     #     st.write("Unable to fetch chapter details.")
-
-
-    # # Define text content for different slides based on BOX input
-    # slide_content = [f"Chapter {i}" for i in range(1, num_chapters+1)]
-
-    # # Create tabs
-    # tabs = [f"Chapter {i}" for i in range(1, num_chapters+1)]
-    # selected_tab = st.radio("Select a Chapter:", tabs)
-
-
-    # # Get the index of the selected tab
-    # selected_slide_index = tabs.index(selected_tab)
-    # # Display the content of the selected slide
-    # st.text_area("Chapter Content", value=slide_content[selected_slide_index], height=300, key=selected_slide_index)
