@@ -75,9 +75,22 @@ url_chapter_summary='none'
 
 
 if st.button("Run Summarization 🏄🏼"):
-    # with st.spinner('Running! No sploils here :😉:'):
+    st.spinner('Running! No sploils here :😉:')
     #-------------------------------------------------------------------------------------------------------------------------------------------------------
     #Main Summary
+
+    custom_style = """
+    <style>
+        .highlight-text {
+            color: white; /* Change text color to white */
+            background-color: rgba(0, 0, 0, 0.5); /* Add a semi-transparent black background */
+            padding: 10px; /* Add padding for better visibility */
+            border-radius: 5px; /* Add rounded corners for the text box */
+        }
+        </style>
+    """
+    st.markdown(custom_style, unsafe_allow_html=True)
+
 
     if chapter_number == 1:
         st.header(f"🧐💭 What happens in the first chapter of {book_name}?")
