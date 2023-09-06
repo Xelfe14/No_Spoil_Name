@@ -124,9 +124,9 @@ if st.button("Run Summarization 🏄🏼"):
         for topic, value in dummy_dict_2['topics'].items():
             st.write(f"**{topic}**: {', '.join(value)}")
 
-    # Display the summary for the current chapter
-        for st.markdown(f"### Summary for Chapter {i + 1}")
-            st.write(dummy_dict_2['chapter_sum'])
+         # Display the summary for the current chapter
+        st.markdown(f"### Summary for Chapter {i + 1}")
+        st.write(dummy_dict_2['chapter_sum'])
 
     # Add a horizontal line to separate chapters
     st.markdown("---")
