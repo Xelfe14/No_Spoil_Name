@@ -96,35 +96,42 @@ if st.button("Run Summarization 🏄🏼"):
 
     #-------------------------------------------------------------------------------------------------------------------------------------------------------
     # #Summary Breakdown
-    # # Define text content for different slides based on BOX input
-    # slide_content = [f"Chapter {i}" for i in range(1, num_chapters+1)]
 
-    # # Create tabs
-    # tabs = [f"Chapter {i}" for i in range(1, num_chapters+1)]
-    # selected_tab = st.radio("Select a Chapter:", tabs)
+    # st.title("Chapter Breakdown")
+    # for i in range(chapter_number):
+    #     # Display topics for the current chapter
+    #     st.markdown(f"### Topics for Chapter {i + 1}")
+    #     for topic, value in dummy_dict_2['topics'].items():
+    #         st.write(f"**{topic}**: {', '.join(value)}")
+
+    #      # Display the summary for the current chapter
+    #     st.markdown(f"### Summary for Chapter {i + 1}")
+    #     st.write(dummy_dict_2['chapter_sum'])
+
+    # # Add a horizontal line to separate chapters
+    # st.markdown("---")
 
 
-    # # Get the index of the selected tab
-    # selected_slide_index = tabs.index(selected_tab)
+    st.title("Chapter Breakdown")
 
-    # # Display the content of the selected slide
-    # st.text_area("Chapter Content", value=slide_content[selected_slide_index], height=300, key=selected_slide_index)
+    chapter_number = chapter_number  # Replace with the actual number of chapters
+    current_chapter = st.slider("Select Chapter", 1, chapter_number, 1)
+    chapter_box = st.beta_container()
 
-
-    st.header("Chapter Breakdown")
-    for i in range(chapter_number):
-        # Display topics for the current chapter
-        st.markdown(f"### Topics for Chapter {i + 1}")
+    #       Display topics for the current chapter inside the box
+    with chapter_box:
+        st.markdown(f"### Topics for Chapter {current_chapter}")
         for topic, value in dummy_dict_2['topics'].items():
             st.write(f"**{topic}**: {', '.join(value)}")
 
-         # Display the summary for the current chapter
-        st.markdown(f"### Summary for Chapter {i + 1}")
+    # Display the summary for the current chapter inside the box
+    with chapter_box:
+        st.markdown(f"### Summary for Chapter {current_chapter}")
         st.write(dummy_dict_2['chapter_sum'])
 
-    # Add a horizontal line to separate chapters
-    st.markdown("---")
-
+    # Add a horizontal line to separate chapters inside the box
+    with chapter_box:
+        st.markdown("---")
 
 
 
