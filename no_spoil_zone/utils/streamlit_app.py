@@ -33,11 +33,28 @@ page_bg_img = f"""
 """
 st.markdown(page_bg_img, unsafe_allow_html=True)
 #-------------------------------------------------------------------------------------------------------------------------------------------------------
-
 #Front header
-st.markdown("""# NO SPOIL ZONE
-## by the Tadpoles
-smooth slopes and no spoilers""")
+st.markdown(
+        "<h1 style='text-align: center; color: black;'>:100: No Sploil Zone! :100:</h1>",
+        unsafe_allow_html=True
+    )
+st.markdown("### :livres: Choose a Book and Discover Its Summary and Topics :livres:")
+st.markdown("---")
+#-------------------------------------------------------------------------------------------------------------------------------------------------------
+# PARAMS
+
+dumy_dict={ 'master_sum': 'sumssunfovnzonzrnojvoizjfoznocnzoecizecinzoiczopejozjfojaofjaozj)ajfàjaoiefjoiejfoijfoinekon'}
+dumy_dict_2={ "chapter_sum": 'jfpefpzkfoz,foz,io,zf,zofnozfioze,foz,eiof,zepfk,pze,' , "topics": {"persons" :['j','o','r'],"places": ['a','b','h'], "general": ['x','z','w'] } }
+params = {
+    'author_name': author_name,
+    'book_name': book_name,
+    'chapter': chapter_number
+    }
+url_main_summary=
+url_chapter_summary=
+main_summary_response= requests.get(url_main_summary, params=params)
+chapter_summary_response= requests.get(url_chapter_summary, params=params)
+
 #-------------------------------------------------------------------------------------------------------------------------------------------------------
 
 #drop down boxs for Authors and Books and Chapters
@@ -55,54 +72,60 @@ with st.container():
 
     # Input for the number of chapters
     num_chapters = int(st.text_input('Total Number of Chapters'))
-#-------------------------------------------------------------------------------------------------------------------------------------------------------
-  #API Params PULLLMEH
 
-    url = 'http://gcpurl/summary'
-
-    params = {
-        'title': selected_title, # 0 for Sunday, 1 for Monday, ...
-        'autohor': filtered_bookz
-    }
-
-    response = requests.get(url, params=params)
-    response.json() #=> {wait: 64}
+if st.button("Run Summarization :fusée:"):
+    with st.spinner('Running! No sploils here :clin_d'œil:'):
 #-------------------------------------------------------------------------------------------------------------------------------------------------------
     #Main Summary
-    st.subheader("Main Summary")
-    if book_summary_reponse.status_code == 200:
-        book_summary = book_summary_reponse.json()
-        st.write(book_summary)
+
+    if chapter_number == 1:
+        st.subheader(f":pensif::bulle_de_pensée: What happens in the first chapter of {book_name}?")
     else:
-        st.write("Error retrieving summary")
+        st.subheader(f":pensif::bulle_de_pensée: What happens in the first {chapter_number} chapters of {book_name}?")
+        st.markdown(dummy_dict['master_sum'])
+        st.markdown("---")
+
+
+    # if book_summary_reponse.status_code == 200:
+    #     book_summary = book_summary_reponse.json()
+    #     st.write(book_summary)
+    # else:
+    #     st.write("Error retrieving summary")
 
 #-------------------------------------------------------------------------------------------------------------------------------------------------------
     #Summary Breakdown
     st.subheader("Chapter Breakdown")
-    if chapter_response.status_code == 200:
-        chapter_data = chapter_response.json()
-        st.write(f"Chapter Title: {chapter_data['title']}")
-        st.subheader("Topic Analysis")
-        for topic, summary in chapter_data['topics'].items():
-            st.write(f"Topic: {topic}")
-            st.write(f"Summary: {summary}")
-    else:
-        st.write("Unable to fetch chapter details.")
+    st.markdown(f"### Topics for Chapter {i}")
+    for topic, value in dummy_dict_2['topics'].items():
+        st.write(f"**{topic}**: {', '.join(value)}"
+    st.markdown(f"### Summary for Chapter {i}")
+    st.write(dummy_dict_2['chapter_sum'])
+    st.markdown("---")
 
 
-    # Define text content for different slides based on BOX input
-    slide_content = [f"Chapter {i}" for i in range(1, num_chapters+1)]
-
-    # Create tabs
-    tabs = [f"Chapter {i}" for i in range(1, num_chapters+1)]
-    selected_tab = st.radio("Select a Chapter:", tabs)
 
 
-    # Get the index of the selected tab
-    selected_slide_index = tabs.index(selected_tab)
-    # Display the content of the selected slide
-    st.text_area("Chapter Content", value=slide_content[selected_slide_index], height=300, key=selected_slide_index)
+
+    # if chapter_response.status_code == 200:
+    #     chapter_data = chapter_response.json()
+    #     st.write(f"Chapter Title: {chapter_data['title']}")
+    #     st.subheader("Topic Analysis")
+    #     for topic, summary in chapter_data['topics'].items():
+    #         st.write(f"Topic: {topic}")
+    #         st.write(f"Summary: {summary}")
+    # else:
+    #     st.write("Unable to fetch chapter details.")
 
 
-#things to do:
-#1. widen page
+    # # Define text content for different slides based on BOX input
+    # slide_content = [f"Chapter {i}" for i in range(1, num_chapters+1)]
+
+    # # Create tabs
+    # tabs = [f"Chapter {i}" for i in range(1, num_chapters+1)]
+    # selected_tab = st.radio("Select a Chapter:", tabs)
+
+
+    # # Get the index of the selected tab
+    # selected_slide_index = tabs.index(selected_tab)
+    # # Display the content of the selected slide
+    # st.text_area("Chapter Content", value=slide_content[selected_slide_index], height=300, key=selected_slide_index)
