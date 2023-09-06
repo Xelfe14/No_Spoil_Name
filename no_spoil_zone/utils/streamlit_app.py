@@ -89,12 +89,12 @@ if st.button("Run Summarization 🏄🏼"):
         }
         </style>
     """
-    st.markdown(custom_style, unsafe_allow_html=True)
+
 
 
     if chapter_number == 1:
         st.header(f"🧐💭 What happens in the first chapter of {book_name}?")
-        st.markdown(dummy_dict['master_sum'])
+        st.markdown(dummy_dict['master_sum'],custom_style, unsafe_allow_html=True)
     else:
         st.header(f"🧐💭 What happens in the first: {chapter_number} chapters of {book_name}?")
         st.markdown(dummy_dict['master_sum'])
