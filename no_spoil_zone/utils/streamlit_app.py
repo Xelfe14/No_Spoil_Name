@@ -6,7 +6,7 @@ import base64
 import plotly.express as px
 import requests
 
-# Background image CSS (commented out for now)
+# Background image CSS
 page_bg_img = f"""
 <style>
 [data-testid="stAppViewContainer"] > .main {{
