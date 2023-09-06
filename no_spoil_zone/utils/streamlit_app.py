@@ -80,10 +80,10 @@ if st.button("Run Summarization 🏄🏼"):
     #Main Summary
 
     if chapter_number == 1:
-        st.subheader(f"🧐💭 What happens in the first chapter of {book_name}?")
+        st.header(f"🧐💭 What happens in the first chapter of {book_name}?")
         st.markdown(dummy_dict['master_sum'])
     else:
-        st.subheader(f"🧐💭 What happens in the first: {chapter_number} chapters of {book_name}?")
+        st.header(f"🧐💭 What happens in the first: {chapter_number} chapters of {book_name}?")
         st.markdown(dummy_dict['master_sum'])
         st.markdown("---")
 
@@ -111,19 +111,7 @@ if st.button("Run Summarization 🏄🏼"):
     # st.text_area("Chapter Content", value=slide_content[selected_slide_index], height=300, key=selected_slide_index)
 
 
-    st.subheader("Chapter Breakdown")
-        # for i in range(chapter_number):
-        #     i=1
-        #     st.markdown(f"### Topics for Chapter {i}")
-        #     for topic, value in dummy_dict_2['topics'].items():
-        #         st.write(f"**{topic}**: {', '.join(value)}"
-
-        #     st.markdown(f"### Summary for Chapter {i}")
-        #     st.write(dummy_dict_2['chapter_sum'])
-        #     st.markdown("---")
-        #     i+=1
-
-
+    st.header("Chapter Breakdown")
     for i in range(chapter_number):
         # Display topics for the current chapter
         st.markdown(f"### Topics for Chapter {i + 1}")
