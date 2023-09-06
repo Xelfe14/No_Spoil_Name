@@ -95,12 +95,14 @@ if st.button("Run Summarization :🏄🏼:"):
     #-------------------------------------------------------------------------------------------------------------------------------------------------------
     #Summary Breakdown
         st.subheader("Chapter Breakdown")
-        st.markdown(f"### Topics for Chapter {i}")
-        for topic, value in dummy_dict_2['topics'].items():
-            st.write(f"**{topic}**: {', '.join(value)}"
-        st.markdown(f"### Summary for Chapter {i}")
-        st.write(dummy_dict_2['chapter_sum'])
-        st.markdown("---")
+        for i in range(chapter_number):
+            st.markdown(f"### Topics for Chapter {i}")
+            for topic, value in dummy_dict_2['topics'].items():
+                st.write(f"**{topic}**: {', '.join(value)}"
+
+            st.markdown(f"### Summary for Chapter {i}")
+            st.write(dummy_dict_2['chapter_sum'])
+            st.markdown("---")
 
 
 
