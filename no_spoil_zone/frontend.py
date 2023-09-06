@@ -10,10 +10,11 @@ def main():
     st.markdown("### 📚 Choose a Book and Discover Its Summary and Topics 📚")
     st.markdown("---")
 
+
     col1, col2, col3 = st.columns(3)
 
     with col1:
-        author_name = st.selectbox("Select Author", ["Jane Austen", "William Shakespear", "Mark Twain"])
+        author_name = st.selectbox("Select Author", ["G. A. Henty", "Henri Rene Guy de Maupassant", "Honore de Balzac", "Jane Austen"])
     with col2:
         book_name = st.selectbox("Select Book", ["Emma", "Hamlet", "Tom Sawyer"])
     with col3:
@@ -52,12 +53,12 @@ def main():
                         chapter_summary_data = chapter_summary_response.json()
                         chapter_summary = chapter_summary_data.get('chapter_sum', '')
                         topic_dict = chapter_summary_data.get('topics', '')
-                        st.subheader(f"Chapter {i} People, Places, and Things")
+                        st.subheader(f"Chapter {i} - People, Places, and Things")
                         st.write("========================================================================================")
                         st.markdown(f"**People:** {', '.join(topic_dict['persons'])}")
                         st.markdown(f"**Places:** {', '.join(topic_dict['places'])}")
                         st.markdown(f"**Things:** {', '.join(topic_dict['general'])}")
-                        st.subheader(f"Chapter {i} Summary")
+                        st.subheader(f"Chapter {i} - Summary")
                         st.write("========================================================================================")
                         st.markdown(chapter_summary)
                     else:
