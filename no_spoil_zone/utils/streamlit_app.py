@@ -10,7 +10,7 @@ import requests
 page_bg_img = f"""
 <style>
 [data-testid="stAppViewContainer"] > .main {{
-    background-image: url("https://img.freepik.com/premium-photo/book-opens-doors-knowledge-creativity-brain-splash-with-ideas_674594-2247.jpg");
+    background-image: url("https://img.freepik.com/premium-photo/illustration-magic-book-with-fantastic-stories-ai-generated_871188-653.jpg");
     background-size: 100%;
     background-position: center;
     background-repeat: no-repeat;
