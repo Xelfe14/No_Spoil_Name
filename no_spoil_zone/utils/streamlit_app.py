@@ -8,11 +8,11 @@ import requests
 
 def main():
     st.markdown(
-        "<h1 style='text-align: center; color: #E31727 ;'>:100: No Sploil Zone! :100:</h1>",
+        "<h1 style='text-align: center; color: #E31727 ;'>💯 No Sploil Zone! 💯</h1>",
         unsafe_allow_html=True
     )
     st.markdown(
-        "<div style='text-align: center;'>knowledge now, spoils later :chut:</div>",
+        "<div style='text-align: center;'>knowledge now, spoils later 🤫</div>",
         unsafe_allow_html=True
     )
     st.markdown("---")
@@ -37,8 +37,8 @@ def main():
     with col3:
         chapter_number = st.number_input("Enter Chapter Number:", min_value=1, value=1)
     st.markdown("---")
-    if st.button("Run Summarization :fusée:"):
-        with st.spinner('Running! No sploils here :clin_d'œil:'):
+    if st.button("Run Summarization 🚀"):
+        with st.spinner('Running! No sploils here 😉'):
             try:
                 # Making API request for Master Summary
                 master_url = f"https://api-no-spoil-zone-vr5zz4u7ca-uc.a.run.app/"
@@ -48,9 +48,9 @@ def main():
                     # Assuming the summary is returned in 'summary' key in JSON response
                     master_summary = master_summary_data.get('master_sum', '')
                     if chapter_number == 1:
-                       st.subheader(f":pensif::bulle_de_pensée: What happens in the first chapter of {book_name}?")
+                       st.subheader(f"🧐💭 What happens in the first chapter of {book_name}?")
                     else:
-                        st.subheader(f":pensif::bulle_de_pensée: What happens in the first {chapter_number} chapters of {book_name}?")
+                        st.subheader(f"🧐💭 What happens in the first {chapter_number} chapters of {book_name}?")
                     st.markdown(master_summary)
                 # else:
                 #     st.error(f"Failed to get Master Summary. Status Code: {master_summary_response.status_code}")
@@ -64,7 +64,7 @@ def main():
                         topic_dict = chapter_summary_data.get('topics', '')
                         st.subheader(f"Chapter {i}")
                         st.write("=========================================================================")
-                        st.subheader("People :homme_femme_fille_garçon:, Places :immeubles:, and Things :pion_échec:")
+                        st.subheader("People 👨‍👩‍👦‍👦, Places 🏢, and Things ♟")
                         st.markdown(f"**People:** {', '.join(topic_dict['persons'])}")
                         st.markdown(f"**Places:** {', '.join(topic_dict['places'])}")
                         st.markdown(f"**Things:** {', '.join(topic_dict['general'])}")
