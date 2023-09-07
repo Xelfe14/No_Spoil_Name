@@ -68,7 +68,7 @@ def main():
                         st.markdown(f"**People:** {', '.join(topic_dict['persons'])}")
                         st.markdown(f"**Places:** {', '.join(topic_dict['places'])}")
                         st.markdown(f"**Things:** {', '.join(topic_dict['general'])}")
-                        st.subheader(f"Summary :bloc_notes:")
+                        st.subheader(f"Summary 📝")
                         st.markdown(chapter_summary)
                         st.markdown("---")
                     else:
