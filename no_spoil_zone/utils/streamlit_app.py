@@ -10,7 +10,7 @@ import requests
 page_bg_img = f"""
 <style>
 [data-testid="stAppViewContainer"] > .main {{
-    background-image: url("https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2788&q=80");
+    background-image: url("https://img.freepik.com/premium-photo/book-opens-doors-knowledge-creativity-brain-splash-with-ideas_674594-2247.jpg");
     background-size: 100%;
     background-position: center;
     background-repeat: no-repeat;
