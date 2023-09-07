@@ -7,30 +7,30 @@ import plotly.express as px
 import requests
 
 # Background image CSS
-page_bg_img = f"""
-<style>
-[data-testid="stAppViewContainer"] > .main {{
-    background-image: url("https://img.freepik.com/premium-photo/illustration-magic-book-with-fantastic-stories-ai-generated_871188-653.jpg");
-    background-size: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: local;
-}}
+# page_bg_img = f"""
+# <style>
+# [data-testid="stAppViewContainer"] > .main {{
+#     background-image: url("https://img.freepik.com/premium-photo/illustration-magic-book-with-fantastic-stories-ai-generated_871188-653.jpg");
+#     background-size: 100%;
+#     background-position: center;
+#     background-repeat: no-repeat;
+#     background-attachment: local;
+# }}
 
-[data-testid="stHeader"] {{
-    background:
-}}
+# [data-testid="stHeader"] {{
+#     background:
+# }}
 
-[data-testid="stToolbar"] {{
-    right: 2rem;
-}}
+# [data-testid="stToolbar"] {{
+#     right: 2rem;
+# }}
 
-.css-1n76uvr .e1tzin5v0 {{
-  background: rgba(255,255,255,0.5)
-}}
+# .css-1n76uvr .e1tzin5v0 {{
+#   background: rgba(255,255,255,0.5)
+# }}
 
-</style>
-"""
+# </style>
+# """
 st.markdown(page_bg_img, unsafe_allow_html=True)
 
 def main():
@@ -40,13 +40,25 @@ def main():
     )
     st.markdown("### 📚 Choose a Book and Discover Its Summary and Topics 📚")
     st.markdown("---")
-
+    author_book_dict = {
+        "G. A. Henty": ["A Knight of the White Cross: A Tale of the Siege of Rhodes", "All But Lost: A Novel. Vol. 2 of 3",\
+        "Among Malay Pirates : a Tale of Adventure and Peril", "At Aboukir and Acre: A Story of Napoleon's Invasion of Egypt",\
+        "At Aboukir and Acre: A Story of Napoleon's Invasion of Egypt", "Beric the Briton : a Story of the Roman Invasion",\
+        "Bonnie Prince Charlie : a Tale of Fontenoy and Culloden", "By England's Aid; or, the Freeing of the Netherlands",\
+        "By Pike and Dyke: a Tale of the Rise of the Dutch Republic","By Sheer Pluck: A Tale of the Ashanti War", "Colonel Thorndyke's Secret",\
+        "Facing Death; Or, The Hero of the Vaughan Pit: A Tale of the Coal Mines", "In Freedom's Cause : A Story of Wallace and Bruce",\
+        "In the Hands of the Cave-Dwellers", "Out with Garibaldi: A story of the liberation of Italy", "Rujub, the Juggler",\
+        "The Bravest of the Brave — or, with Peterborough in Spain", "The Lion of the North: A Tale of the Times of Gustavus Adolphus", "The Queen's Cup"],
+        "Henri Rene Guy de Maupassant": ["Yvette"],
+        "Honore de Balzac": ["A Daughter of Eve"],
+        "Jane Austen": ["Emma"]
+        }
     col1, col2, col3 = st.columns(3)
 
     with col1:
         author_name = st.selectbox("Select Author", ["G. A. Henty", "Henri Rene Guy de Maupassant", "Honore de Balzac", "Jane Austen"])
     with col2:
-        book_name = st.selectbox("Select Book", ["Emma", "Hamlet", "Tom Sawyer"])
+        book_name = st.selectbox("Select Book", author_book_dict[author_name])
     with col3:
         chapter_number = st.number_input("Enter Chapter Number:", min_value=1, value=1)
 
